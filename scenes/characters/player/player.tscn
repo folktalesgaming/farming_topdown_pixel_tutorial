@@ -1,7 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://b2acdf5yr443y"]
+[gd_scene load_steps=49 format=3 uid="uid://b2acdf5yr443y"]
 
 [ext_resource type="Texture2D" uid="uid://cbkcw27ktu5vb" path="res://assets/game/characters/character_sprites.png" id="1_7janu"]
+[ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_uatvp"]
 [ext_resource type="Texture2D" uid="uid://d0taem274c0kk" path="res://assets/game/characters/basic_character_sprites.png" id="2_rb2ip"]
+[ext_resource type="Script" path="res://scripts/state_machine/node_state_machine.gd" id="3_ilq5n"]
+[ext_resource type="Script" path="res://scenes/characters/player/idle_state_script.gd" id="4_gxc7u"]
+[ext_resource type="Script" path="res://scenes/characters/player/walk_state_Script.gd" id="5_14srx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvf7o"]
 atlas = ExtResource("1_7janu")
@@ -390,8 +394,9 @@ animations = [{
 radius = 8.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_uatvp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerAminationSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gdt5l")
 animation = &"idle_front"
@@ -400,3 +405,17 @@ autoplay = "idle_front"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_gxqsx")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("3_ilq5n")
+initial_node_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_animated_sprite_2d")]
+script = ExtResource("4_gxc7u")
+player = NodePath("../..")
+player_animated_sprite_2d = NodePath("../../PlayerAminationSprite")
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_animated_sprite_2d")]
+script = ExtResource("5_14srx")
+player = NodePath("../..")
+player_animated_sprite_2d = NodePath("../../PlayerAminationSprite")
