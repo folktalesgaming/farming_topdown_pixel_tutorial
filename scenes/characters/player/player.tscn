@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b2acdf5yr443y"]
+[gd_scene load_steps=54 format=3 uid="uid://b2acdf5yr443y"]
 
 [ext_resource type="Texture2D" uid="uid://cbkcw27ktu5vb" path="res://assets/game/characters/character_sprites.png" id="1_7janu"]
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_uatvp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/characters/player/chopping_state_script.gd" id="7_q070i"]
 [ext_resource type="Script" path="res://scenes/characters/player/tilling_state_script.gd" id="8_jucvo"]
 [ext_resource type="Script" path="res://scenes/characters/player/watering_state_script.gd" id="9_dfwih"]
+[ext_resource type="PackedScene" uid="uid://cpmi6wydn2b4w" path="res://scenes/components/hit_component.tscn" id="10_r2xd6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvf7o"]
 atlas = ExtResource("1_7janu")
@@ -396,14 +397,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxqsx"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_axw0w"]
+radius = 3.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_uatvp")
+current_tool = 1
 
 [node name="PlayerAminationSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_gdt5l")
-animation = &"watering_right"
+animation = &"idle_front"
 autoplay = "idle_front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -424,10 +429,11 @@ script = ExtResource("5_14srx")
 player = NodePath("../..")
 player_animated_sprite_2d = NodePath("../../PlayerAminationSprite")
 
-[node name="Chopping" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_animated_sprite_2d")]
+[node name="Chopping" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_animated_sprite_2d", "hit_component_collision_shape")]
 script = ExtResource("7_q070i")
 player = NodePath("../..")
 player_animated_sprite_2d = NodePath("../../PlayerAminationSprite")
+hit_component_collision_shape = NodePath("../../HitComponent/HurtCollisionShape2D")
 
 [node name="Tilling" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "player_animated_sprite_2d")]
 script = ExtResource("8_jucvo")
@@ -438,3 +444,10 @@ player_animated_sprite_2d = NodePath("../../PlayerAminationSprite")
 script = ExtResource("9_dfwih")
 player = NodePath("../..")
 player_animated_sprite_2d = NodePath("../../PlayerAminationSprite")
+
+[node name="HitComponent" parent="." instance=ExtResource("10_r2xd6")]
+current_tool = 1
+
+[node name="HurtCollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
+shape = SubResource("CircleShape2D_axw0w")
+debug_color = Color(0.901661, 0.0852551, 0.723838, 0.42)
