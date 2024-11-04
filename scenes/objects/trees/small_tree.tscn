@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu563biknk8ci"]
+[gd_scene load_steps=10 format=3 uid="uid://cu563biknk8ci"]
 
+[ext_resource type="Shader" path="res://scenes/objects/trees/tree_shake.gdshader" id="1_igtpq"]
 [ext_resource type="Texture2D" uid="uid://dtokfkirnfaji" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_kxn1x"]
 [ext_resource type="PackedScene" uid="uid://bfhyxhwfx144l" path="res://scenes/components/hurt_component.tscn" id="2_ai323"]
 [ext_resource type="Script" path="res://scenes/objects/trees/small_tree.gd" id="2_m222d"]
 [ext_resource type="PackedScene" uid="uid://cw8h0uchsl7ui" path="res://scenes/components/damage_component.tscn" id="3_bfem4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qahtf"]
+resource_local_to_scene = true
+shader = ExtResource("1_igtpq")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfy4c"]
 atlas = ExtResource("1_kxn1x")
@@ -16,6 +23,7 @@ radius = 4.0
 size = Vector2(8, 20)
 
 [node name="SmallTree" type="Sprite2D"]
+material = SubResource("ShaderMaterial_qahtf")
 position = Vector2(0, -10)
 texture = SubResource("AtlasTexture_cfy4c")
 script = ExtResource("2_m222d")
