@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://csceoctv5q8nq"]
 
+[ext_resource type="Shader" path="res://scenes/objects/trees/tree_shake.gdshader" id="1_k12qo"]
 [ext_resource type="Texture2D" uid="uid://dtokfkirnfaji" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_u638h"]
 [ext_resource type="Script" path="res://scenes/objects/trees/large_tree.gd" id="2_brn5f"]
 [ext_resource type="PackedScene" uid="uid://bfhyxhwfx144l" path="res://scenes/components/hurt_component.tscn" id="3_rfsbg"]
 [ext_resource type="PackedScene" uid="uid://cw8h0uchsl7ui" path="res://scenes/components/damage_component.tscn" id="4_fg2qc"]
-[ext_resource type="Shader" path="res://scenes/objects/trees/tree_shake.gdshader" id="5_7csib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_me3nf"]
 resource_local_to_scene = true
-shader = ExtResource("5_7csib")
+shader = ExtResource("1_k12qo")
 shader_parameter/shake_intensity = 0.0
 shader_parameter/shake_speed = 20.0
 

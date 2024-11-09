@@ -17,7 +17,7 @@ tile_map_data = PackedByteArray("AAAMAAwAAQABAAEAAAAMAAsAAQABAAEAAAAMAAkAAQABAAE
 tile_set = ExtResource("1_vqjsf")
 
 [node name="Houses" type="TileMapLayer" parent="TileMaps"]
-tile_map_data = PackedByteArray("AAAVAAoABQAAAAAAAQADAAgABQAAAAAAAgANABAABQAAAAAAAwA=")
+tile_map_data = PackedByteArray("AAAJAA4ABQAAAAAABgAWAAwABQAAAAAABwA=")
 tile_set = ExtResource("1_vqjsf")
 
 [node name="Player" parent="." instance=ExtResource("2_cmdex")]
