@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cu563biknk8ci"]
 
-[ext_resource type="Shader" path="res://scenes/objects/trees/tree_shake.gdshader" id="1_igtpq"]
+[ext_resource type="Shader" path="res://scenes/objects/shake.gdshader" id="1_igtpq"]
 [ext_resource type="Texture2D" uid="uid://dtokfkirnfaji" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_kxn1x"]
 [ext_resource type="PackedScene" uid="uid://bfhyxhwfx144l" path="res://scenes/components/hurt_component.tscn" id="2_ai323"]
 [ext_resource type="Script" path="res://scenes/objects/trees/small_tree.gd" id="2_m222d"]
@@ -20,7 +20,7 @@ region = Rect2(0, 0, 16, 32)
 radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg73k"]
-size = Vector2(8, 20)
+size = Vector2(10, 20)
 
 [node name="SmallTree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_qahtf")
