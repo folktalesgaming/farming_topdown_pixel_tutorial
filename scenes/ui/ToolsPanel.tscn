@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://ef0bvdwhk2mp"]
+
+[ext_resource type="Theme" uid="uid://c018gqogbyo40" path="res://scenes/ui/game_ui_theme.tres" id="1_b87pr"]
+[ext_resource type="Texture2D" uid="uid://bgjld7tplcjol" path="res://assets/game/objects/basic_tools_and_meterials.png" id="2_53ihi"]
+[ext_resource type="Script" path="res://scenes/ui/tools_panel.gd" id="2_fmwqo"]
+[ext_resource type="Texture2D" uid="uid://c3b63jw8n133c" path="res://assets/game/objects/basic_plants.png" id="3_qow2o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u5wp"]
+atlas = ExtResource("2_53ihi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_no8nx"]
+load_path = "res://.godot/imported/basic_tools_and_meterials.png-dc4e25f18f664f6d22b0d3438dace52c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoht4"]
+atlas = SubResource("CompressedTexture2D_no8nx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ljbfm"]
+load_path = "res://.godot/imported/basic_tools_and_meterials.png-dc4e25f18f664f6d22b0d3438dace52c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flrk1"]
+atlas = SubResource("CompressedTexture2D_ljbfm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yho84"]
+atlas = ExtResource("3_qow2o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_igtkw"]
+load_path = "res://.godot/imported/basic_plants.png-95b9b15040aa30969080ee5e6985e7ef.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh6hb"]
+atlas = SubResource("CompressedTexture2D_igtkw")
+region = Rect2(0, 16, 16, 16)
+
+[node name="ToolsPanel" type="PanelContainer"]
+offset_right = 46.0
+offset_bottom = 46.0
+theme = ExtResource("1_b87pr")
+theme_type_variation = &"DarkWoodPanel"
+script = ExtResource("2_fmwqo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ToolAxe" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolPanelButton"
+icon = SubResource("AtlasTexture_5u5wp")
+icon_alignment = 1
+
+[node name="ToolTilling" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolPanelButton"
+icon = SubResource("AtlasTexture_yoht4")
+icon_alignment = 1
+
+[node name="ToolWaterCan" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolPanelButton"
+icon = SubResource("AtlasTexture_flrk1")
+icon_alignment = 1
+
+[node name="ToolCornSeed" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolPanelButton"
+icon = SubResource("AtlasTexture_yho84")
+icon_alignment = 1
+
+[node name="ToolTomatoSeed" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_type_variation = &"ToolPanelButton"
+icon = SubResource("AtlasTexture_gh6hb")
+icon_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="_on_tool_axe_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTilling" to="." method="_on_tool_tilling_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolWaterCan" to="." method="_on_tool_water_can_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolCornSeed" to="." method="_on_tool_corn_seed_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolTomatoSeed" to="." method="_on_tool_tomato_seed_pressed"]

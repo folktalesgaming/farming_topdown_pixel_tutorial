@@ -404,7 +404,6 @@ radius = 3.0
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_uatvp")
-current_tool = 1
 
 [node name="PlayerAminationSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
@@ -447,7 +446,6 @@ player = NodePath("../..")
 player_animated_sprite_2d = NodePath("../../PlayerAminationSprite")
 
 [node name="HitComponent" parent="." instance=ExtResource("10_r2xd6")]
-current_tool = 1
 
 [node name="HurtCollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
 shape = SubResource("CircleShape2D_axw0w")
