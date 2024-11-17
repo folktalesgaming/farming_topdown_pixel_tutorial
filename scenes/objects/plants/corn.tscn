@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddluh0jd1j3ci"]
+[gd_scene load_steps=10 format=3 uid="uid://ddluh0jd1j3ci"]
 
 [ext_resource type="Script" path="res://scenes/objects/plants/corn.gd" id="1_ka31u"]
 [ext_resource type="Texture2D" uid="uid://c3b63jw8n133c" path="res://assets/game/objects/basic_plants.png" id="1_y3ehk"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c5ha2106t25uh" path="res://scenes/objects/plants/flowering_particles.tscn" id="3_54s6d"]
 [ext_resource type="PackedScene" uid="uid://bole5eyasuqhk" path="res://scenes/objects/plants/growth_cycle_component.tscn" id="4_hnqg5"]
 [ext_resource type="PackedScene" uid="uid://bfhyxhwfx144l" path="res://scenes/components/hurt_component.tscn" id="6_nplj2"]
+[ext_resource type="PackedScene" uid="uid://dvneouti3pxt4" path="res://scenes/components/save_data_component.tscn" id="7_vq1mt"]
+[ext_resource type="Resource" uid="uid://bqor878sxlj2u" path="res://resources/scene_data_resource.tres" id="8_k00og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gihxi"]
 size = Vector2(12, 8)
@@ -34,3 +36,6 @@ tool = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_gihxi")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("7_vq1mt")]
+save_data_resource = ExtResource("8_k00og")

@@ -1,15 +1,27 @@
-[gd_scene load_steps=9 format=4 uid="uid://dnqfqx1nfnshv"]
+[gd_scene load_steps=15 format=4 uid="uid://dnqfqx1nfnshv"]
 
 [ext_resource type="PackedScene" uid="uid://doxki47w5hbt7" path="res://scenes/components/day_night_cycle_component.tscn" id="1_3nnbs"]
 [ext_resource type="TileSet" uid="uid://cygshg12asbbs" path="res://tilesets/game_tile_set.tres" id="2_xsjrk"]
 [ext_resource type="PackedScene" uid="uid://b2acdf5yr443y" path="res://scenes/characters/player/player.tscn" id="3_83o3h"]
 [ext_resource type="PackedScene" uid="uid://bdgmhg4juv2c2" path="res://scenes/components/field_cursor_component.tscn" id="3_ce563"]
+[ext_resource type="PackedScene" uid="uid://dvneouti3pxt4" path="res://scenes/components/save_data_component.tscn" id="3_diwge"]
 [ext_resource type="Script" path="res://scenes/components/field_cursor_component.gd" id="4_chcek"]
+[ext_resource type="Resource" uid="uid://barbo174t26h" path="res://resources/tilemap_layer_data_resource.tres" id="4_lji1g"]
 [ext_resource type="PackedScene" uid="uid://4yjcuxn40tjn" path="res://scenes/ui/game_screen_canvas.tscn" id="4_yy04s"]
 [ext_resource type="PackedScene" uid="uid://bihit3c3hxmra" path="res://scenes/components/crops_cursor_component.tscn" id="5_dw3y0"]
 [ext_resource type="Script" path="res://scenes/components/crops_cursor_component.gd" id="6_kht3p"]
+[ext_resource type="PackedScene" uid="uid://ckxjxwdks6vf1" path="res://scenes/components/save_level_data_component.tscn" id="9_e5dxo"]
+[ext_resource type="Script" path="res://scenes/components/save_level_data_component.gd" id="10_rajof"]
+[ext_resource type="PackedScene" uid="uid://ofdkxd4jtimg" path="res://scenes/components/test_scene_save_data_manager_component.tscn" id="11_j83b1"]
+[ext_resource type="Script" path="res://scenes/components/test_scene_save_data_manager_component.gd" id="12_oujfd"]
 
 [node name="TestScenePlantCropsInTilledDirt" type="Node2D"]
+
+[node name="SaveLevelDataComponent" parent="." instance=ExtResource("9_e5dxo")]
+script = ExtResource("10_rajof")
+
+[node name="TestSceneSaveDataManagerComponent" parent="." instance=ExtResource("11_j83b1")]
+script = ExtResource("12_oujfd")
 
 [node name="DayNightCycleComponent" parent="." instance=ExtResource("1_3nnbs")]
 visible = false
@@ -27,6 +39,9 @@ tile_set = ExtResource("2_xsjrk")
 
 [node name="TiledSoil" type="TileMapLayer" parent="TileMaps"]
 tile_set = ExtResource("2_xsjrk")
+
+[node name="SaveDataComponent" parent="TileMaps/TiledSoil" instance=ExtResource("3_diwge")]
+save_data_resource = ExtResource("4_lji1g")
 
 [node name="CropFields" type="Node2D" parent="."]
 
